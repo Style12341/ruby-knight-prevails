@@ -1,9 +1,14 @@
-
 class KnightPuzzle
   def initialize
     @transformations = [[1, 2], [-1, 2], [2, 1], [2, 1], [1, - 2], [- 1, - 2], [- 2, 1], [- 2, - 1]]
     @visited_squares = Array.new(8) { Array.new(8, false) }
     @best_ans = Hash.new(nil)
+  end
+
+  def knight_moves(start, last)
+    ans = knight_prevails(start, last)
+    puts "You made it in #{ans.length - 1} moves! Here's your path:"
+    ans.each { |move| p move }
   end
 
   def knight_prevails(start, last)
@@ -57,4 +62,4 @@ class KnightPuzzle
 end
 
 kp = KnightPuzzle.new
-p kp.knight_prevails([3, 3], [4, 3])
+kp.knight_moves([3, 3], [4, 3])
